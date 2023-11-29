@@ -50,7 +50,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard/admin-profile"
+          to="/dashboard"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"

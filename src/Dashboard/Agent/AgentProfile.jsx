@@ -1,20 +1,20 @@
 import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
-import useAdmin from "../Hooks/useAdmin";
+import { AuthContext } from "../../Providers/AuthProvider";
+import useAgent from "../../Hooks/useAgent";
 
-const AdminProfile = () => {
+const AgentProfile = () => {
   const { user } = useContext(AuthContext);
-  const [isAdmin] = useAdmin();
+  const [isAgent] = useAgent();
 
   console.log(user);
 
   return (
     <div>
-      Admin Profile:
+      Agent Profile:
       <div className="bg-gray-800 m-10 p-10 rounded-lg ">
         {user ? <p>Name: {user?.displayName}</p> : ""}
         {user ? <p>Email: {user?.email}</p> : ""}
-        {isAdmin ? <p>Role: Admin</p> : ""}
+        {isAgent ? <p>Role: Agent</p> : ""}
 
         {user ? (
           <label className="btn btn-ghost btn-circle avatar">
@@ -34,4 +34,4 @@ const AdminProfile = () => {
   );
 };
 
-export default AdminProfile;
+export default AgentProfile;

@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
-const ManageProperties = () => {
+const AgentAddedProperties = () => {
   const axiosSecure = useAxiosSecure();
   const { data: properties = [], refetch } = useQuery({
     queryKey: ["properties"],
@@ -13,7 +13,7 @@ const ManageProperties = () => {
 
   return (
     <div>
-      <h1>Manage Properties:</h1>
+      <h1>Agent Added Properties:</h1>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
@@ -42,7 +42,7 @@ const ManageProperties = () => {
                         Location: {property.propertyLocation}
                       </div>
                       <div className="text-sm opacity-50">
-                        Price Range: {property.minPrice}-{property.maxPrice}
+                       Price Range: {property.minPrice}-{property.maxPrice}
                       </div>
                     </div>
                   </div>
@@ -68,10 +68,10 @@ const ManageProperties = () => {
                   </div>
                 </td>
                 <th>
-                  <button className="btn">Verify</button>
+                  <button className="btn">Update</button>
                 </th>
                 <th>
-                  <button className="btn">Reject</button>
+                  <button className="btn">Delete</button>
                 </th>
               </tr>
             ))}
@@ -82,4 +82,4 @@ const ManageProperties = () => {
   );
 };
 
-export default ManageProperties;
+export default AgentAddedProperties;

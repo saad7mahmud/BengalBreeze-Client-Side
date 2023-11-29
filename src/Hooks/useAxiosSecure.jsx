@@ -35,7 +35,7 @@ const useAxiosSecure = () => {
       const status = error.response.status;
       if (status == 401 || status == 403) {
         await logOut();
-        navigate("/login");
+         navigate("/login");
       }
 
       // Any status codes that falls outside the range of 2xx cause this function to trigger
