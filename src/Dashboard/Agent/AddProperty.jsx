@@ -33,6 +33,21 @@ const AddProperty = () => {
     const minPrice = form.minPrice.value;
     const maxPrice = form.maxPrice.value;
 
+    // Swal.fire("Please Wait......");
+    Swal.fire({
+      title: "Property Uploading...",
+      html: "Please wait for confirmation message",
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log("I was closed by the timer");
+      }
+    });
+
     try {
       const response = await axiosPublic.post(
         imgbb_api,
@@ -56,14 +71,22 @@ const AddProperty = () => {
         propertyTitle: propertyTitle,
         propertyLocation: propertyLocation,
         propertyImage: image,
-        minPrice: minPrice,
-        maxPrice: maxPrice,
+        minPrice: parseInt(minPrice),
+        maxPrice: parseInt(maxPrice),
         verificationStatus: "pending",
+        isAdvertised: "no",
       };
       console.log(propertiesInfo);
       axiosPublic.post("/add/properties", propertiesInfo).then((res) => {
-        console.log(res);
-        Swal.fire("Added");
+        console.log(res.data.insertedId);
+        Swal.fire({
+          icon: "success",
+          title: "Property Successfully Added",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+          form.reset();
+          navigate("/dashboard/agent-added-properties");
       });
     } catch (error) {
       console.error(

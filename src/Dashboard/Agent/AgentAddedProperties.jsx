@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const AgentAddedProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -11,6 +12,33 @@ const AgentAddedProperties = () => {
     },
   });
 
+  // Delete Property
+
+  const handleDeleteProperty = (property) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/property/${property._id}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Property has been deleted.",
+              icon: "success",
+            });
+            refetch();
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div>
       <h1>Agent Added Properties:</h1>
@@ -19,13 +47,16 @@ const AgentAddedProperties = () => {
           {/* head */}
           <thead>
             <tr>
+              <th>SL</th>
               <th>Property Information</th>
               <th>Agent Information</th>
             </tr>
           </thead>
           <tbody>
-            {properties.map((property) => (
+            {properties.map((property, idx) => (
               <tr key={property._id}>
+                <td>{idx + 1}</td>
+
                 <td>
                   <div className="flex items-center gap-3">
                     <div className="avatar">
@@ -42,7 +73,7 @@ const AgentAddedProperties = () => {
                         Location: {property.propertyLocation}
                       </div>
                       <div className="text-sm opacity-50">
-                       Price Range: {property.minPrice}-{property.maxPrice}
+                        Price Range: {property.minPrice}-{property.maxPrice}
                       </div>
                     </div>
                   </div>
@@ -71,7 +102,12 @@ const AgentAddedProperties = () => {
                   <button className="btn">Update</button>
                 </th>
                 <th>
-                  <button className="btn">Delete</button>
+                  <button
+                    onClick={() => handleDeleteProperty(property)}
+                    className="btn"
+                  >
+                    Delete
+                  </button>
                 </th>
               </tr>
             ))}
