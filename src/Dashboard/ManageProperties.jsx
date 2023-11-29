@@ -7,7 +7,7 @@ const ManageProperties = () => {
   const { data: properties = [], refetch } = useQuery({
     queryKey: ["properties"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/agent-properties");
+      const res = await axiosSecure.get("/all-properties");
       return res.data;
     },
   });

@@ -7,7 +7,7 @@ const ManageAdvertise = () => {
   const { data: properties = [], refetch } = useQuery({
     queryKey: ["properties"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/agent-properties");
+      const res = await axiosSecure.get("/properties/ad");
       return res.data;
     },
   });

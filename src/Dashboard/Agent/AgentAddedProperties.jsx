@@ -1,13 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const AgentAddedProperties = () => {
   const axiosSecure = useAxiosSecure();
+  const { user } = useContext(AuthContext);
+
+  const loggedEmail = user?.email;
   const { data: properties = [], refetch } = useQuery({
     queryKey: ["properties"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/agent-properties");
+      const res = await axiosSecure.get(
+        `/agent-properties/?loggedAgentEmail=${loggedEmail}`
+      );
       return res.data;
     },
   });

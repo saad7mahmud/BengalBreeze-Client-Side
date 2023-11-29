@@ -154,7 +154,7 @@ const ManageUsers = () => {
                     )}
                   </th>
                   <th>
-                    {!(user?.role == "admin") && (
+                    {(user?.role == "agent") && (
                       <button className="btn  ">Mark as Fraud</button>
                     )}
                   </th>
