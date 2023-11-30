@@ -1,11 +1,50 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const PropertyDetails = () => {
+  const { user } = useContext(AuthContext);
+
   const property = useLoaderData();
   console.log(property);
+  const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
 
   const handleAddWishList = (property) => {
     console.log("wish", property);
+
+    // Send this user to DB
+    const propertiesInfo = {
+      buyerName: user?.displayName,
+      buyerEmail: user?.email,
+      buyerImage: user?.photoURL,
+      propertyId: property._id,
+      agentName: property.agentName,
+      agentEmail: property.agentEmail,
+      agentImage: property.agentImage,
+      propertyTitle: property.propertyTitle,
+      propertyLocation: property.propertyLocation,
+      propertyImage: property.propertyImage,
+      minPrice: property.minPrice,
+      maxPrice: property.maxPrice,
+      verificationStatus: property.verificationStatus,
+      isAdvertised: property.isAdvertised,
+      isAddedByFraud: property.isAddedByFraud,
+    };
+    console.log(propertiesInfo);
+    axiosPublic.post("/property/wishlists", propertiesInfo).then((res) => {
+      console.log(res.data.insertedId);
+      Swal.fire({
+        icon: "success",
+        title: "Property Successfully Added to Wishlist",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+
+      navigate("/dashboard/user-wishlist");
+    });
   };
 
   return (
