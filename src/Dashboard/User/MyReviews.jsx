@@ -90,12 +90,6 @@ const MyReviews = () => {
                   <br />
                   <div className="flex">
                     {" "}
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src={review.reviewerImage}
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
                     <div className="flex flex-col space-y-2">
                       <span className="badge badge-ghost badge-sm">
                         Review by: {review.reviewerName}
@@ -106,9 +100,18 @@ const MyReviews = () => {
                       <span className="badge badge-ghost badge-sm">
                         Review Time: {review.formattedTime}
                       </span>
-                      <span className="p-3 rounded max-w-xs badge-accent ">
-                        Review: {review.review}
-                      </span>
+                      <div>
+                        <div className="chat chat-start">
+                          <div className="chat-image avatar">
+                            <div className="w-10 rounded-full">
+                              <img src={review.reviewerImage} />
+                            </div>
+                          </div>
+                          <div className="chat-bubble max-w-xs">
+                            {review.review}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </td>
