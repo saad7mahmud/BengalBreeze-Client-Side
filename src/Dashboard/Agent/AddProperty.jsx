@@ -33,7 +33,7 @@ const AddProperty = () => {
     const minPrice = form.minPrice.value;
     const maxPrice = form.maxPrice.value;
 
-    // Swal.fire("Please Wait......");
+  
     Swal.fire({
       title: "Property Uploading...",
       html: "Please wait for confirmation message",
