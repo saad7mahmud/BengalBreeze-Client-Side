@@ -103,7 +103,7 @@ const ManageAdvertise = () => {
                         Price Range: {property.minPrice}-{property.maxPrice}
                       </div>
                       <div className="text-sm opacity-50">
-                        Verification: {property.isAdvertised}
+                        Verification: {property.verificationStatus}
                       </div>
                       <div className="text-sm opacity-50">
                         Advertise Status: {property.isAdvertised}
