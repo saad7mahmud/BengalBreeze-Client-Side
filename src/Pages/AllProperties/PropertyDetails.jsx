@@ -55,6 +55,7 @@ const PropertyDetails = () => {
     const review = form.review.value;
     const reviewInMilliseconds = Date.now();
     const reviewFormattedTime = new Date().toLocaleTimeString();
+    const formattedDate = new Date(reviewInMilliseconds).toLocaleDateString();
 
     // Send this user to DB
     const reviewerInfo = {
@@ -64,6 +65,7 @@ const PropertyDetails = () => {
       review,
       nowInMilliseconds: reviewInMilliseconds,
       formattedTime: reviewFormattedTime,
+      formattedDate: formattedDate,
       propertyId: property._id,
       agentName: property.agentName,
       agentEmail: property.agentEmail,
