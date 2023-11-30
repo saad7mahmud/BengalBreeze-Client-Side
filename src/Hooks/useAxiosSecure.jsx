@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "http://bengal-breeze-server.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -35,7 +35,7 @@ const useAxiosSecure = () => {
       const status = error.response.status;
       if (status == 401 || status == 403) {
         await logOut();
-         navigate("/login");
+        navigate("/login");
       }
 
       // Any status codes that falls outside the range of 2xx cause this function to trigger

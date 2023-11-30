@@ -59,13 +59,13 @@ export const router = createBrowserRouter([
         loader: async ({ params }) => {
           // Fetch data from the first URL
           const response1 = await fetch(
-            `http://localhost:5000/one-property/${params.id}`
+            `http://bengal-breeze-server.vercel.app/one-property/${params.id}`
           );
           const data1 = await response1.json();
 
           // Fetch data from the second URL
           const response2 = await fetch(
-            `http://localhost:5000/specific-reviews/${params.id}`
+            `http://bengal-breeze-server.vercel.app/specific-reviews/${params.id}`
           );
           const data2 = await response2.json();
 
