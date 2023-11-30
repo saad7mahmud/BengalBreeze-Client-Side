@@ -17,7 +17,6 @@ const FeatureSection = () => {
       </Typography>
 
       <Grid container spacing={3}>
-        {/* Feature 1 */}
         <Grid item xs={12} sm={6} md={4}>
           <Card>
             <CardContent>
@@ -37,7 +36,6 @@ const FeatureSection = () => {
           </Card>
         </Grid>
 
-        {/* Feature 2 */}
         <Grid item xs={12} sm={6} md={4}>
           <Card>
             <CardContent>
@@ -57,7 +55,6 @@ const FeatureSection = () => {
           </Card>
         </Grid>
 
-        {/* Feature 3 */}
         <Grid item xs={12} sm={6} md={4}>
           <Card>
             <CardContent>

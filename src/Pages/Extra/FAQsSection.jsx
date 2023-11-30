@@ -24,7 +24,6 @@ const FAQsSection = () => {
       answer:
         "Listing your property is free on BengalBreeze. However, certain premium services may have associated fees. Please check our pricing page for details.",
     },
-    // Add more FAQs as needed
   ];
 
   return (

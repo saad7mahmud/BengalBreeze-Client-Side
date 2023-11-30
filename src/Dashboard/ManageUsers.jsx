@@ -12,7 +12,7 @@ const ManageUsers = () => {
     },
   });
 
-  // Delete User
+  // Delete Users
 
   const handleDeleteUser = (user) => {
     Swal.fire({

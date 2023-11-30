@@ -1,14 +1,7 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
-  Container,
-} from "@mui/material";
+import { Card, CardMedia, Typography, Container } from "@mui/material";
 
 const YouTubeVideo = () => {
-  const videoUrl = "https://www.youtube.com/embed/pPl3ZZdTP3g"; // Replace with your actual YouTube video ID
-
+  const videoUrl = "https://www.youtube.com/embed/xE2LIuoOGKI";
   return (
     <Container
       maxWidth="md"
@@ -23,10 +16,10 @@ const YouTubeVideo = () => {
         Promo of the business
       </Typography>
       <Card>
-        {/* YouTube Video */}
+      
         <CardMedia
           component="iframe"
-          height="500" // You may need to adjust the dimensions based on your video
+          height="500" 
           src={videoUrl}
           title="YouTube Video"
         />

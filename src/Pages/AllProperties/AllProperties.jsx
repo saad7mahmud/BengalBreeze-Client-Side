@@ -27,12 +27,12 @@ const AllProperties = () => {
       <div className="flex flex-wrap justify-center gap-5 m-10">
         {properties.map((property) => (
           <div key={property._id}>
-            <div className="card w-96 bg-base-100 shadow-xl">
+            <div className="card w-96 h-full bg-base-100 shadow-xl">
               <figure className="px-10 pt-10">
                 <img
                   src={property.propertyImage}
                   alt="Shoes"
-                  className="rounded-xl max-h-40 "
+                  className="rounded-xl  max-h-40 "
                 />
               </figure>
               <div className="card-body  ">
