@@ -29,33 +29,7 @@ const ReviewShow = () => {
                   <td></td>
                   <td>
                     <br />
-                    {/* <div className="flex">
-                    {" "}
-                    <div className="flex flex-col space-y-2">
-                      <span className="badge badge-ghost badge-sm">
-                        Review by: {review.reviewerName}
-                      </span>
-                      <span className="badge badge-ghost badge-sm">
-                        {review.reviewerEmail}
-                      </span>
-                      <span className="badge badge-ghost badge-sm">
-                        Review Time: {review.formattedTime}
-                      </span>
 
-                      <div>
-                        <div className="chat chat-start">
-                          <div className="chat-image avatar">
-                            <div className="w-10 rounded-full">
-                              <img src={review.reviewerImage} />
-                            </div>
-                          </div>
-                          <div className="chat-bubble max-w-xs">
-                            {review.review}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> */}
                     <div>
                       <div className="chat chat-start">
                         <div className="chat-image avatar">
@@ -73,7 +47,7 @@ const ReviewShow = () => {
                           </time>
                         </div>
                         <div className="chat-bubble min-w-full">
-                         {review.review}
+                          {review.review}
                         </div>
                         <div className="chat-footer opacity-50">
                           Property Name: {review.propertyTitle}

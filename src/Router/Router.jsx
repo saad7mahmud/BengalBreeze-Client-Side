@@ -49,11 +49,36 @@ export const router = createBrowserRouter([
         path: "/all-properties",
         element: <AllProperties></AllProperties>,
       },
+      // {
+      //   path: "/all-properties/:id",
+      //   element: <PropertyDetails></PropertyDetails>,
+      //   loader:  ({ params }) =>
+      //     fetch(`http://localhost:5000/one-property/${params.id}`),
+      // },
       {
         path: "/all-properties/:id",
         element: <PropertyDetails></PropertyDetails>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/one-property/${params.id}`),
+        loader: async ({ params }) => {
+          // Fetch data from the first URL
+          const response1 = await fetch(
+            `http://localhost:5000/one-property/${params.id}`
+          );
+          const data1 = await response1.json();
+
+          // Fetch data from the second URL
+          const response2 = await fetch(
+            `http://localhost:5000/specific-reviews/${params.id}`
+          );
+          const data2 = await response2.json();
+
+          // Combine or structure the data as needed
+          const combinedData = {
+            propertyData: data1,
+            reviewData: data2,
+          };
+
+          return combinedData;
+        },
       },
     ],
   },
