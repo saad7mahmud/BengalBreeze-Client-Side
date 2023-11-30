@@ -23,6 +23,7 @@ import UserProfile from "../Dashboard/User/UserProfile";
 import UserWishlist from "../Dashboard/User/UserWishlist";
 import PropertyBought from "../Dashboard/User/PropertyBought";
 import MyReviews from "../Dashboard/User/MyReviews";
+import AllProperties from './../Pages/AllProperties/AllProperties';
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register></Register>,
+      },
+      {
+        path: "/all-properties",
+        element: <AllProperties></AllProperties>,
       },
     ],
   },
