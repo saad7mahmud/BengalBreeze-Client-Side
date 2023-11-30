@@ -25,7 +25,6 @@ import PropertyBought from "../Dashboard/User/PropertyBought";
 import MyReviews from "../Dashboard/User/MyReviews";
 import AllProperties from "./../Pages/AllProperties/AllProperties";
 import PropertyDetails from "./../Pages/AllProperties/PropertyDetails";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const router = createBrowserRouter([
   {
@@ -47,14 +46,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all-properties",
-        element: <AllProperties></AllProperties>,
+        element: (
+          <PrivateRoutes>
+            <AllProperties></AllProperties>
+          </PrivateRoutes>
+        ),
       },
-      // {
-      //   path: "/all-properties/:id",
-      //   element: <PropertyDetails></PropertyDetails>,
-      //   loader:  ({ params }) =>
-      //     fetch(`http://localhost:5000/one-property/${params.id}`),
-      // },
+
       {
         path: "/all-properties/:id",
         element: <PropertyDetails></PropertyDetails>,
