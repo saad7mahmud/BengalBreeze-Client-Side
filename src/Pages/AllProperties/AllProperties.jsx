@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const AllProperties = () => {
   const axiosSecure = useAxiosSecure();
@@ -10,6 +11,10 @@ const AllProperties = () => {
       return res.data;
     },
   });
+
+  //   const handleDetails = (property) => {
+  //     console.log(property._id);
+  //   };
 
   return (
     <div>
@@ -51,8 +56,20 @@ const AllProperties = () => {
                 </div>
                 {/* <hr /> */}
                 <p>Verification Status: {property.verificationStatus}</p>
+                <p>
+                  {" "}
+                  Price Range: ${property.minPrice}-{property.maxPrice} USD
+                </p>
                 <div className="card-actions ">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <Link to={`/all-properties/${property._id}`}>
+                    {" "}
+                    <button
+                      //   onClick={() => handleDetails(property)}
+                      className="btn w-full btn-neutral"
+                    >
+                      Details
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

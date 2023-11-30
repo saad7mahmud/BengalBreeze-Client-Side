@@ -23,7 +23,9 @@ import UserProfile from "../Dashboard/User/UserProfile";
 import UserWishlist from "../Dashboard/User/UserWishlist";
 import PropertyBought from "../Dashboard/User/PropertyBought";
 import MyReviews from "../Dashboard/User/MyReviews";
-import AllProperties from './../Pages/AllProperties/AllProperties';
+import AllProperties from "./../Pages/AllProperties/AllProperties";
+import PropertyDetails from "./../Pages/AllProperties/PropertyDetails";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,12 @@ export const router = createBrowserRouter([
       {
         path: "/all-properties",
         element: <AllProperties></AllProperties>,
+      },
+      {
+        path: "/all-properties/:id",
+        element: <PropertyDetails></PropertyDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/one-property/${params.id}`),
       },
     ],
   },
