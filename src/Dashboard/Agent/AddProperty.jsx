@@ -75,6 +75,7 @@ const AddProperty = () => {
         maxPrice: parseInt(maxPrice),
         verificationStatus: "pending",
         isAdvertised: "no",
+        isAddedByFraud: "no",
       };
       console.log(propertiesInfo);
       axiosPublic.post("/add/properties", propertiesInfo).then((res) => {
@@ -85,8 +86,8 @@ const AddProperty = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-          form.reset();
-          navigate("/dashboard/agent-added-properties");
+        form.reset();
+        navigate("/dashboard/agent-added-properties");
       });
     } catch (error) {
       console.error(

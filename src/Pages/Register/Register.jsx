@@ -27,6 +27,7 @@ const Register = () => {
           name: result?.user?.displayName,
           photo: result?.user?.photoURL,
           role: "user",
+          isFraud: 'no'
         };
         axiosPublic.post("/users", userInfo).then((res) => {
           console.log(res.data);
@@ -102,6 +103,7 @@ const Register = () => {
               name: name,
               photo: image,
               role: "user",
+              isFraud: "no",
             };
             axiosPublic.post("/users", userInfo).then((res) => {
               console.log(res);

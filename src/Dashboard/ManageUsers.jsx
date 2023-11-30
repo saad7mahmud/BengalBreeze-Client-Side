@@ -88,6 +88,41 @@ const ManageUsers = () => {
       }
     });
   };
+  // Mark as fraud
+  // const handleMarkFraud = (user) => {
+  //   Swal.fire({
+  //     title: "Are you sure?",
+  //     text: "You won't be able to revert this!",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#3085d6",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Mark as Add",
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       axiosSecure.patch(`/properties/fraud/${user.email}`).then((data) => {
+  //         if (data.data.modifiedCount > 0) {
+  //           Swal.fire({
+  //             title: "Marked as Fraud",
+  //             text: "Properties added by fraud has been unpublished",
+  //             icon: "success",
+  //           });
+  //           refetch();
+  //         }
+  //       });
+  //       axiosSecure.patch(`/users/fraud/${user.email}`).then((data) => {
+  //         if (data.data.modifiedCount > 0) {
+  //           // Swal.fire({
+  //           //   title: "Marked as Fraud",
+  //           //   text: "Properties added by fraud has been unpublished",
+  //           //   icon: "success",
+  //           // });
+  //           refetch();
+  //         }
+  //       });
+  //     }
+  //   });
+  // };
 
   return (
     <div>
@@ -123,6 +158,9 @@ const ManageUsers = () => {
                         <div className="text-sm opacity-50">
                           Role: {user?.role}
                         </div>
+                        <div className="text-sm opacity-50">
+                          isFraud: {user?.isFraud}
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -130,6 +168,8 @@ const ManageUsers = () => {
                   <th>
                     {user?.role == "admin" ? (
                       "Role: admin"
+                    ) : user?.isFraud == "yes" ? (
+                      "Fraud"
                     ) : (
                       <button
                         onClick={() => handleMakeAdmin(user)}
@@ -154,8 +194,15 @@ const ManageUsers = () => {
                     )}
                   </th>
                   <th>
-                    {(user?.role == "agent") && (
-                      <button className="btn  ">Mark as Fraud</button>
+                    {user?.role == "agent" && !(user?.isFraud == "yes") ? (
+                      <button
+                        // onClick={() => handleMarkFraud(user)}
+                        className="btn  "
+                      >
+                        Mark as Fraud
+                      </button>
+                    ) : (
+                      ""
                     )}
                   </th>
                   <th>

@@ -29,6 +29,7 @@ const Login = () => {
           name: result?.user?.displayName,
           photo: result?.user?.photoURL,
           role: "user",
+          isFraud: "no",  
         };
         console.log(userInfo);
         axiosPublic.post("/users", userInfo).then((res) => {

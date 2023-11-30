@@ -101,6 +101,9 @@ const ManageProperties = () => {
                       <div className="text-sm opacity-50">
                         Verification: {property.verificationStatus}
                       </div>
+                      <div className="text-sm opacity-50">
+                        isAddedByFraud: {property.isAddedByFraud}
+                      </div>
                     </div>
                   </div>
                 </td>
