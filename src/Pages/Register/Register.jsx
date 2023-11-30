@@ -45,7 +45,7 @@ const Register = () => {
       });
   };
 
-  const imgbb_key = import.meta.env.VITE_IMGBB_KEY;
+  const imgbb_key = "5a129e46210b85000b5645961cf061be";
   const imgbb_api = `https://api.imgbb.com/1/upload?key=${imgbb_key}`;
 
   const axiosPublic = useAxiosPublic();
